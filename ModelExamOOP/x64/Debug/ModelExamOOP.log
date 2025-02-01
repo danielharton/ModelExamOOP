@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\Daniel\source\repos\ModelExamOOP\ModelExamOOP\main.cpp(45,1): warning C4172: returning address of local variable or temporary : temp
+C:\Users\Daniel\source\repos\ModelExamOOP\ModelExamOOP\main.cpp(32,1): warning C4172: returning address of local variable or temporary : temp
+  ModelExamOOP.vcxproj -> C:\Users\Daniel\source\repos\ModelExamOOP\x64\Debug\ModelExamOOP.exe
