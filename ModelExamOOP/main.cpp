@@ -13,9 +13,11 @@ public:
 
 	Locuinta() {
 		this->numeClient = new char[this->nameLength];
+		//Not a bug: a lot of space allocated. And nothing stored in it!!!!
 	}
 	~Locuinta() {
-		delete[]this->numeClient;
+		//Add an axtra check in order to avoid to delete NULL pointer (see stupid fix bellow)
+		if (numeClient) delete[]this->numeClient;
 	}
 	//pre incrementation
 	Locuinta& operator++() {
@@ -26,6 +28,10 @@ public:
 	//post incrementation
 	Locuinta& operator++(int) {
 		Locuinta temp = *this;
+		//there is no explicit operator= !!! => numeClient is blindly copied in temp.numeClient
+		//stupid fastest fix: put null in temp.numeClient to replace this->numeClient
+		temp.numeClient = NULL;
+		//more elaborate fix would be: allocate memory and copy the string in it
 		if (this->discount < 10)
 			this->discount++;
 		
@@ -64,6 +70,7 @@ public:
 			throw exception("asdsa");
 		
 	}
+//etaj is not initilised explicetely in a constructor
 };
 class Casa : public Locuinta {
 	public:
